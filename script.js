@@ -1,13 +1,26 @@
+const options = ["rock", "paper", 'scissors'];
+
 const playerSelection = "rock";
 const computerSelection = getComputerChoice();
 
 
-function playAround() {
+function playAround(user, computer) {
+  if (user == computer) {
+    console.log(computer);
+    return "it's a tie";
+  }
+  
+  else if (user == "rock" && computer == "scissors" ||
+          user == "scissors" && computer == "paper" ||
+          user == "paper" && computer == "rock")
+          return `You Win! ${user} beats ${computer}`;
+  
+  else return `You Lose! ${computer} beats ${user}`;
+
 }
 
 function getComputerChoice() {
-  let choices = ["rock", "paper", 'scissors'];
-  return choices[Math.floor(Math.random() * 3)];
+  const choices = options[Math.floor(Math.random() * options.length)];
+  return choices;
 }
-
-console.log(computerSelection);
+console.log(playAround(playerSelection, computerSelection));
